@@ -1,5 +1,5 @@
 import React from 'react';
-
+import  Navbar  from './Navbar.js';
 
 // import Blog from './frontend/BlogPage/Blog'   
 // import Navbar from './frontend/Navbar';
@@ -12,14 +12,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
-  return (
+  return <>
+  <Navbar/>
 
-    <>
-  
+   
+
    <p>BLOG APP</p>
+ 
    </>
-
-  );
+  ;
 }
 
 export default App;
