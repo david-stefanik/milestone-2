@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import HomePage from '../frontend/HomePage';
+import navBar from './pages/navbar';
 
 
 
 function App() {
   return (
    <div className="App">
-    <HomePage />
+    <navBar />
     </div>
 
   

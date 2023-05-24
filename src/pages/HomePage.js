@@ -1,4 +1,4 @@
-import { Button } from 'bootstrap';
+import { Button } from 'react-bootstrap';
 import React from 'react';
 
 
@@ -24,7 +24,7 @@ export default function HomePage() {
                     <Button to=''> Iman</Button>
                 </div>
                 <div className='btn-aphra'>
-                    <Button to=''> Jose</Button>
+                    <Button to=''> </Button>
                 </div>
 
 
@@ -33,6 +33,3 @@ export default function HomePage() {
             </>
     )
 }
-
-
-
