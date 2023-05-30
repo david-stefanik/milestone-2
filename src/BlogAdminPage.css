@@ -1,97 +1,96 @@
 /* Styles for the login container */
 .login-container {
-    width: 500px;
-    margin: 100px auto;
-    padding: 20px;
-    border: 1px solid lightgray;
-    border-radius: 50px;
-    background-color: #8ead60;
-    text-align: center;
-  }
-  
-  /* Margin for the login container heading */
-  .login-container h2 {
-    margin-bottom: 50px;
-  }
-  
-  /* Styles for form labels */
-  .login-container form label {
-    display: block;
-    margin-bottom: 10px;
-    text-align: left;
-  }
-  
-  /* Styles for form inputs */
-  .login-container form input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  
-  /* Styles for form buttons */
-  .login-container form button {
-    padding: 20px 30px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-  }
-  
-  /* Styles for the admin container */
-  .admin-container {
-    padding: 50px;
-  }
-  
-  /* Styles for the navbar within the admin container */
-  .admin-container .navbar {
-    background-color: #333;
-    color: #fff;
-    padding: 70px;
-  }
-  
-  /* Styles for the navbar ul within the admin container */
-  .admin-container .navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  /* Margin for navbar li elements within the admin container */
-  .admin-container .navbar ul li {
-    margin-right: 10px;
-  }
-  
-  /* Styles for links within navbar li elements */
-  .admin-container .navbar ul li a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  /* Styles for hover effect on links within navbar li elements */
-  .admin-container .navbar ul li a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Styles for the navbar outside the admin container */
-  .navbar {
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* Styles for the navbar links */
-  .navbar-links {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* Margin for navbar li elements */
-  .navbar-links li {
-    margin: 0 10px;
-  }
-  
+  width: 500px;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid lightgray;
+  border-radius: 50px;
+  background-color: #8ead60;
+  text-align: center;
+}
+
+/* Margin for the login container heading */
+.login-container h2 {
+  margin-bottom: 50px;
+}
+
+/* Styles for form labels */
+.login-container form label {
+  display: block;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+/* Styles for form inputs */
+.login-container form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Styles for form buttons */
+.login-container form button {
+  padding: 20px 30px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+/* Styles for the admin container */
+.admin-container {
+  padding: 50px;
+}
+
+/* Styles for the navbar within the admin container */
+.admin-container .navbar {
+  background-color: #333;
+  color: #fff;
+  padding: 70px;
+}
+
+/* Styles for the navbar ul within the admin container */
+.admin-container .navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Margin for navbar li elements within the admin container */
+.admin-container .navbar ul li {
+  margin-right: 10px;
+}
+
+/* Styles for links within navbar li elements */
+.admin-container .navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Styles for hover effect on links within navbar li elements */
+.admin-container .navbar ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Styles for the navbar outside the admin container */
+.navbar {
+  display: flex;
+  justify-content: center;
+}
+
+/* Styles for the navbar links */
+.navbar-links {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+
+/* Margin for navbar li elements */
+.navbar-links li {
+  margin: 0 10px;
+}

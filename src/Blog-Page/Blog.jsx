@@ -1,125 +1,144 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, ListGroup } from 'react-bootstrap';
-import './Blog.css';
-import ReactPlayer from 'react-player';
+import { BlogContext } from './BlogContext';
 
+import './Blog.css';
 
 export default function Blog() {
-     // Array of blog posts
-    const blogPosts = [
-        {
-            title: "SUBJECT",
-            author: 'Aphra',
-            date: 'May 21, 2023',
-            image: 'https://images.pexels.com/photos/3345882/pexels-photo-3345882.jpeg?auto=compress&cs=tinysrgb&w=1600',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        },
-        {
-            title: "SUBJECT",
-            author: 'David',
-            date: 'May 15, 2023',
-            image: 'https://images.pexels.com/photos/3913025/pexels-photo-3913025.jpeg?auto=compress&cs=tinysrgb&w=1600',
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        },
-        {
-            title: "SUBJECT",
-            author: 'Jose',
-            date: 'May 20, 2023',
-            image: 'https://images.pexels.com/photos/2007647/pexels-photo-2007647.jpeg?auto=compress&cs=tinysrgb&w=1600',
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        },
-        {
-            title: "SUBJECT",
-            author: 'Iman',
-            date: 'May 19, 2023',
-            image: 'https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&w=1600',
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        },
-    ];
+  const { admins, blogPosts, likeBlogPost, favoriteBlogPost, addCommentToPost } = useContext(BlogContext);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [comments, setComments] = useState({});
 
-    return (
-        <div>
-            {/* Navigation bar */}
-            <nav className="nav">
-                <h2>CODING TO SUCCESS</h2>
-                <ul className="menu">
-                    {/* Home link */}
-                    <li>
-                        <Link to="/">HOME</Link>
-                    </li>
-                    {/* Blog link */}
-                    <li>
-                        <Link to="/blog-admin">BLOG</Link>
-                    </li>
-                    <li>
-                        {/* Search input */}
-                        <div className="search-container">
-                            <input type="text" placeholder="Search" className="search-input" />
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-    {/* Blog posts section */}
-    <div className="posts">
-                <div className="post-container">
-                    {/* Links to individual authors */}
-                    <div className="button-container">
-                        <Link to="/aphra" className="blog-button name-box">
-                            APHRA
-                        </Link>
-                        <Link to="/david" className="blog-button name-box">
-                            DAVID
-                        </Link>
-                        <Link to="/jose" className="blog-button name-box">
-                            JOSE
-                        </Link>
-                        <Link to="/iman" className="blog-button name-box">
-                            IMAN
-                        </Link>
-                    </div>
-                </div>
-                {/* Video banner */}
-                <div className="video-banner">
-                    <ReactPlayer
-                        className="video-player"
-                        url="https://player.vimeo.com/external/368782010.sd.mp4?s=a1478e7348ee04a92761efb2a0420e5750604c38&profile_id=164&oauth2_token_id=57447761"
-                        playing
-                        loop
-                        muted
-                    />
-                </div>
+  const handleCommentChange = (postId, comment) => {
+    setComments((prevComments) => ({
+      ...prevComments,
+      [postId]: comment,
+    }));
+  };
 
+  const renderBlogPosts = (admin) => {
+    if (admins[admin]) {
+      const filteredPosts = blogPosts.filter((post) => post.author.toLowerCase() === admin);
+      return filteredPosts.map((post, index) => {
+        const highlightedTitle = post.title.replace(new RegExp(`(${searchTerm})`, 'gi'), '<mark>$1</mark>');
+        const highlightedAuthor = post.author.replace(new RegExp(`(${searchTerm})`, 'gi'), '<mark>$1</mark>');
+        const highlightedDescription = post.description.replace(
+          new RegExp(`(${searchTerm})`, 'gi'),
+          '<mark>$1</mark>'
+        );
 
-              {/* Container for blog post cards */}
-              <div className="blog-post-container">
-                    {/* Render the blog post cards */}
-                    {blogPosts.map((post, index) => (
-                        <Card key={index} className="blog-card">
-                            {/* Blog post image */}
-                            <Card.Img variant="top" src={post.image} alt={post.title} />
-                            <Card.Body>
-                                {/* Blog post title */}
-                                <Card.Title>{post.title}</Card.Title>
-                                {/* Blog post author */}
-                                <Card.Subtitle className="mb-2 text-muted">
-                                    {post.author}
-                                </Card.Subtitle>
-                                {/* Blog post description */}
-                                <Card.Text>{post.description}</Card.Text>
-                            </Card.Body>
-                            <ListGroup className="list-group-flush">
-                                {/* Blog post date */}
-                                <ListGroup.Item>{post.date}</ListGroup.Item>
-                            </ListGroup>
-                            <Card.Body>
-                                {/* Read more link */}
-                                <Card.Link href="#">Read More</Card.Link>
-                            </Card.Body>
-                        </Card>
-                    ))}
-                </div>
+        const comment = comments[post.id] || '';
+
+        return (
+          <Card key={index} className="blog-card">
+            <Card.Img variant="top" src={post.image} alt={post.title} />
+            <Card.Body>
+              <Card.Title dangerouslySetInnerHTML={{ __html: highlightedTitle }} />
+              <Card.Subtitle className="mb-2 text-muted">
+                <span dangerouslySetInnerHTML={{ __html: highlightedAuthor }} />
+              </Card.Subtitle>
+              <Card.Text dangerouslySetInnerHTML={{ __html: highlightedDescription }} />
+            </Card.Body>
+            <ListGroup className="list-group-flush">
+              <ListGroup.Item>{post.date}</ListGroup.Item>
+            </ListGroup>
+            <Card.Body>
+              <Card.Link href="#">Read More</Card.Link>
+              <Card.Link href="#" onClick={() => likeBlogPost(post.id)}>
+                Like ({post.likes})
+              </Card.Link>
+              <Card.Link href="#" onClick={() => favoriteBlogPost(post.id)}>
+                {post.favorite ? 'Remove from Favorites' : 'Add to Favorites'}
+              </Card.Link>
+            </Card.Body>
+            <Card.Body>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  addCommentToPost(post.id, comment);
+                  handleCommentChange(post.id, '');
+                }}
+              >
+                <input
+                  type="text"
+                  placeholder="Leave a comment..."
+                  value={comment}
+                  onChange={(e) => handleCommentChange(post.id, e.target.value)}
+                />
+                <button type="submit">Submit</button>
+              </form>
+              <div>
+                {post.comments.map((comment, commentIndex) => (
+                  <p key={commentIndex}>{comment}</p>
+                ))}
+              </div>
+            </Card.Body>
+          </Card>
+        );
+      });
+    }
+    return null;
+  };
+
+  return (
+    <div>
+      {/* Navigation bar */}
+      <nav className="nav">
+        <h2>CODING TO SUCCESS</h2>
+        <ul className="menu">
+          {/* Home link */}
+          <li>
+            <Link to="/">HOME</Link>
+          </li>
+          {/* Blog link */}
+          <li>
+            <Link to="/blog-admin">BLOG</Link>
+          </li>
+          <li>
+            {/* Search input */}
+            <div className="search-container">
+              <input
+                type="text"
+                placeholder="Search"
+                className="search-input"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
             </div>
+          </li>
+        </ul>
+      </nav>
+      {/* Blog posts section */}
+      <div className="posts">
+        <div className="post-container">
+          {/* Links to individual authors */}
+          <div className="button-container">
+            {Object.keys(admins).map((admin) => (
+              <Link to={`/${admin}`} key={admin} className="blog-button name-box">
+                {admin.toUpperCase()}
+              </Link>
+            ))}
+          </div>
         </div>
-    );
+        {/* Video banner */}
+        <div className="video-banner">
+          {/* Replace the URL with your desired video */}
+          <video
+            className="video-player"
+            src="https://player.vimeo.com/external/368763065.sd.mp4?s=13988c9dbaddf24bcbceb333cc76d1936255e78a&profile_id=164&oauth2_token_id=57447761"
+            autoPlay
+            loop
+            muted
+          />
+        </div>
+        {/* Container for blog post cards */}
+        <div className="blog-post-container">
+          {/* Render the blog post cards for each author */}
+          {Object.keys(admins).map((admin) => renderBlogPosts(admin))}
+        </div>
+      </div>
+    </div>
+  );
 }
+

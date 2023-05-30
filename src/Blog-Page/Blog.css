@@ -26,7 +26,6 @@
 }
 
 /* Styles for the search container */
-
 .search-container {
   display: flex;
   align-items: center;
@@ -78,13 +77,14 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 100px;
-  margin-top: 150px;
+  margin-top: -350px;
 }
 
-/* Styles for the blog card */
+/* Styles for the each blog card/post */
 .blog-card {
-  width: 200px;
-  height: 200px;
+  background-color: transparent !important;
+  width: 300px;
+  height: 100px;
 }
 
 .blog-card:hover {
@@ -103,7 +103,9 @@
   background-color: #f7f5f5;
   border: 10px solid none;
   border-radius: 15px;
-  padding: 20px;
+  padding: 60px;
+  background-color: none !important;
+  box-shadow: none !important;
 }
 
 .blog-post__image {
@@ -169,7 +171,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 50%;
+  width: 100%;
   height: 50%;
   object-fit: cover;
 }
@@ -179,12 +181,27 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-right: 20px; /* Adjust the value as needed */
+  margin-right: 60px; /* Adjust the value as needed */
 }
 
 .search-input {
-  width: 150px;
+  width: 250px;
   border: 1px solid lightgray;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 50px;
+}
+
+/* Blog.css */
+
+/* Add a class for the comment container */
+.comment-container {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+/* Style the individual comments within the container */
+.comment-container p {
+  margin-bottom: 5px;
 }

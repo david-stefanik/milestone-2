@@ -1,16 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import reportWebVitals from './reportWebVitals';
+import { BlogProvider } from './Blog-Page/BlogContext';
+import ReactDOM from 'react-dom';
+import './BlogAdminPage.css';
 
 
 
+// Create a root to render the application
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Render the application inside the root
 root.render(
   <React.StrictMode>
-    <App />
+    {/* Wrap the App component with the BlogProvider to provide blog data */}
+    <BlogProvider>
+      <App />
+    </BlogProvider>
   </React.StrictMode>
 );
-
