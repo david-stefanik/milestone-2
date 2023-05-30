@@ -1,16 +1,25 @@
 import React from 'react';
-import Blog from './Blog-Page/Blog';
+import Blog from './Blog-Page/Blog.jsx';
+import BlogAdminPage from './BlogAdminPage.jsx';
 import './App.css';
 import navBar from './pages/navbar';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 function App() {
   return (
+
+    <Router>
+      <Routes>
+        <Route path="/" element={<Blog />} />
+        <Route path="/blog-admin" element={<BlogAdminPage />} /> {/* Update the path here */}
+      </Routes>
+    </Router>
+  );
+
 
    <div className="App">
     <navBar />
@@ -25,6 +34,11 @@ function App() {
 
 
  );
+
 }
 
 export default App;
+
+
+
+
