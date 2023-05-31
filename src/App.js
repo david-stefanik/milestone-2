@@ -1,5 +1,5 @@
 import React from 'react';
-import  Navbar  from './Navbar.js';
+
 
 // import Blog from './frontend/BlogPage/Blog'   
 // import Navbar from './frontend/Navbar';
@@ -7,20 +7,23 @@ import  Navbar  from './Navbar.js';
 // 'react-router-dom';
 
 import './App.css';
+import navBar from './pages/navbar';
+
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 
 function App() {
-  return <>
-  <Navbar/>
+  return (
 
-   
-
+    <>
+  
    <p>BLOG APP</p>
- 
    </>
-  ;
+
+  );
 }
 
 export default App;
