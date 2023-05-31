@@ -1,0 +1,46 @@
+body{
+    background-color: rgba(220, 212, 202, 0.783);
+}
+
+.nav{
+    background-color: rgb(162, 154, 154);
+    display: flex;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    justify-content: space-between;
+    padding-left: 5px;
+    gap: 15px;
+    align-items: center;
+    list-style-type: none;
+    font-size: larger;
+
+   
+    
+
+}
+
+
+.merch-cards{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3cm;
+    width: auto;
+    justify-content: space-around;
+    gap: 25px;
+}
+
+button{
+    border:none;
+    background-color: blue;
+    color: white;
+    font-size: larger;
+    padding: 10px 10px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+
+
+}
+
+
+
+
+ 
