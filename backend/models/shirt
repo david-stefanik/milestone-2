@@ -1,0 +1,28 @@
+// // DEPENDENCIES
+// const { Sequelize, DataTypes,  Model } = require('sequelize')
+// const sequelize = new Sequelize(process.env.PG_URI)
+// //module.exports = (sequelize,DataTypes)=
+// // MODEL
+// class Shirt extends Model{}
+// Shirt.init({
+//     shirts_id: { 
+//         type: DataTypes.INTEGER, 
+//         primaryKey: true, 
+//         autoIncrement: true
+//     },
+//     s_name: { 
+//         type: DataTypes.STRING, 
+//         allowNull: false 
+//     }},
+    
+//  {
+//     sequelize,                           
+//     modelName: 'Shirt',
+//     tableName: 'shirts',
+//     timestamps: false
+// }) 
+ 
+
+// // EXPORT
+// module.exports = Shirt
+

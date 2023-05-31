@@ -1,19 +1,28 @@
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 import React from 'react';
-
+import navBar from './navbar';
 
 
 export default function HomePage() {
     return (
         <>
         <div className='nav-bar'>
-          {/* nav link */}
+          {navBar}
         </div>
             <div className='header'>
                 <h1>Header sweet sweet merch</h1>
             </div>
 
-            <div className='blog-names-btn'>
+          
+                
+
+
+           
+
+            </>
+    )
+}
+  /* <div className='blog-names-btn'>
                 <div className='btn-aphra'>
                     <Button to=''> Aphra</Button>
                 </div>
@@ -24,12 +33,4 @@ export default function HomePage() {
                     <Button to=''> Iman</Button>
                 </div>
                 <div className='btn-aphra'>
-                    <Button to=''> </Button>
-                </div>
-
-
-            </div>
-
-            </>
-    )
-}
+                    <Button to=''> </Button> */
