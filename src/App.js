@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { BlogProvider } from './Blog-Page/BlogContext.jsx';
 
+
+
 function App() {
   return (
     <BlogProvider> {/* Wrap routes with the BlogProvider */}
