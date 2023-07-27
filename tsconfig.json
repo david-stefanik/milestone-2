@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./dist", // This is where TypeScript will output the compiled JavaScript code.
+    "rootDir": "./src", // The location of your TypeScript source files.
+    "strict": true, // Enable strict type-checking options.
+    "esModuleInterop": true, // Enable compatibility with CommonJS modules.
+    "resolveJsonModule": true, // Enable importing JSON modules directly.
+    "sourceMap": true, // Generate source maps for debugging.
+    "declaration": true, // Generate declaration files (.d.ts) for your TypeScript code.
+    "emitDecoratorMetadata": true, // Required for using decorators with TypeScript.
+    "experimentalDecorators": true // Enable support for experimental decorators.
+  },
+  "include": ["src"], // The files to include for TypeScript compilation (source files).
+  "exclude": ["node_modules"] // The files to exclude from TypeScript compilation.
+}

@@ -1,38 +1,16 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BlogProvider = exports.BlogContext = void 0;
-// eslint-disable-next-line 
-var react_1 = require("react");
+const react_1 = require("react");
 exports.BlogContext = (0, react_1.createContext)({});
-function BlogProvider(_a) {
-    var children = _a.children;
-    var _b = (0, react_1.useState)({
+function BlogProvider({ children }) {
+    const [admins, setAdmins] = (0, react_1.useState)({
         aphra: true,
         david: true,
         jose: true,
         iman: true,
-    }), admins = _b[0], setAdmins = _b[1];
-    var _c = (0, react_1.useState)([
+    });
+    const [blogPosts, setBlogPosts] = (0, react_1.useState)([
         {
             id: 1,
             author: 'Aphra',
@@ -77,51 +55,51 @@ function BlogProvider(_a) {
             favorite: false,
             comments: [],
         },
-    ]), blogPosts = _c[0], setBlogPosts = _c[1];
-    var addBlogPost = function (author, title, description, image, date) {
-        var newBlogPost = {
+    ]);
+    const addBlogPost = (author, title, description, image, date) => {
+        const newBlogPost = {
             id: blogPosts.length + 1,
-            author: author,
-            title: title,
-            description: description,
-            image: image,
-            date: date,
+            author,
+            title,
+            description,
+            image,
+            date,
             likes: 0,
             favorite: false,
             comments: [],
         };
-        setBlogPosts(__spreadArray(__spreadArray([], blogPosts, true), [newBlogPost], false));
+        setBlogPosts([...blogPosts, newBlogPost]);
     };
-    var likeBlogPost = function (postId) {
-        setBlogPosts(function (prevBlogPosts) {
-            return prevBlogPosts.map(function (post) {
+    const likeBlogPost = (postId) => {
+        setBlogPosts((prevBlogPosts) => {
+            return prevBlogPosts.map((post) => {
                 if (post.id === postId) {
-                    return __assign(__assign({}, post), { likes: post.likes + 1 });
+                    return Object.assign(Object.assign({}, post), { likes: post.likes + 1 });
                 }
                 return post;
             });
         });
     };
-    var favoriteBlogPost = function (postId) {
-        setBlogPosts(function (prevBlogPosts) {
-            return prevBlogPosts.map(function (post) {
+    const favoriteBlogPost = (postId) => {
+        setBlogPosts((prevBlogPosts) => {
+            return prevBlogPosts.map((post) => {
                 if (post.id === postId) {
-                    return __assign(__assign({}, post), { favorite: !post.favorite });
+                    return Object.assign(Object.assign({}, post), { favorite: !post.favorite });
                 }
                 return post;
             });
         });
     };
-    var addCommentToPost = function (postId, comment) {
-        setBlogPosts(function (prevBlogPosts) {
-            return prevBlogPosts.map(function (post) {
+    const addCommentToPost = (postId, comment) => {
+        setBlogPosts((prevBlogPosts) => {
+            return prevBlogPosts.map((post) => {
                 if (post.id === postId) {
-                    return __assign(__assign({}, post), { comments: __spreadArray(__spreadArray([], post.comments, true), [comment], false) });
+                    return Object.assign(Object.assign({}, post), { comments: [...post.comments, comment] });
                 }
                 return post;
             });
         });
     };
-    return (react_1.default.createElement(exports.BlogContext.Provider, { value: { admins: admins, blogPosts: blogPosts, addBlogPost: addBlogPost, likeBlogPost: likeBlogPost, favoriteBlogPost: favoriteBlogPost, addCommentToPost: addCommentToPost } }, children));
+    return (React.createElement(exports.BlogContext.Provider, { value: { admins, blogPosts, addBlogPost, likeBlogPost, favoriteBlogPost, addCommentToPost } }, children));
 }
 exports.BlogProvider = BlogProvider;

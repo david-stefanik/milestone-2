@@ -1,21 +1,44 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = require("react");
-var react_router_dom_1 = require("react-router-dom");
-var BlogContext_1 = require("./Blog-Page/BlogContext");
+const react_1 = __importStar(require("react"));
+const react_router_dom_1 = require("react-router-dom");
+const BlogContext_1 = require("./Blog-Page/BlogContext");
 require("./BlogAdminPage.css");
 function BlogAdminPage() {
-    var addBlogPost = (0, react_1.useContext)(BlogContext_1.BlogContext).addBlogPost;
-    var _a = (0, react_1.useState)(''), admin = _a[0], setAdmin = _a[1];
-    var _b = (0, react_1.useState)(''), password = _b[0], setPassword = _b[1];
-    var _c = (0, react_1.useState)(false), isLoggedIn = _c[0], setIsLoggedIn = _c[1];
-    var handleAdminChange = function (event) {
+    const { addBlogPost } = (0, react_1.useContext)(BlogContext_1.BlogContext);
+    const [admin, setAdmin] = (0, react_1.useState)('');
+    const [password, setPassword] = (0, react_1.useState)('');
+    const [isLoggedIn, setIsLoggedIn] = (0, react_1.useState)(false);
+    const handleAdminChange = (event) => {
         setAdmin(event.target.value);
     };
-    var handlePasswordChange = function (event) {
+    const handlePasswordChange = (event) => {
         setPassword(event.target.value);
     };
-    var handleLogin = function (event) {
+    const handleLogin = (event) => {
         event.preventDefault();
         if (admin === 'admin' && password === 'password') {
             setIsLoggedIn(true);
@@ -26,22 +49,22 @@ function BlogAdminPage() {
         setAdmin('');
         setPassword('');
     };
-    var handleTitleChange = function (event) {
+    const handleTitleChange = (event) => {
         setTitle(event.target.value);
     };
-    var handleDateChange = function (event) {
+    const handleDateChange = (event) => {
         setDate(event.target.value);
     };
-    var handleContentChange = function (event) {
+    const handleContentChange = (event) => {
         setContent(event.target.value);
     };
-    var handleSubmit = function (event) {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        var newBlogPost = {
-            title: title,
+        const newBlogPost = {
+            title,
             author: admin,
-            date: date,
-            content: content,
+            date,
+            content,
         };
         addBlogPost(admin, newBlogPost);
         setTitle('');
@@ -60,9 +83,9 @@ function BlogAdminPage() {
                     react_1.default.createElement("input", { type: "password", id: "password", value: password, onChange: handlePasswordChange })),
                 react_1.default.createElement("button", { type: "submit", className: "submit-btn" }, "Submit"))));
     }
-    var _d = (0, react_1.useState)(''), title = _d[0], setTitle = _d[1];
-    var _e = (0, react_1.useState)(''), date = _e[0], setDate = _e[1];
-    var _f = (0, react_1.useState)(''), content = _f[0], setContent = _f[1];
+    const [title, setTitle] = (0, react_1.useState)('');
+    const [date, setDate] = (0, react_1.useState)('');
+    const [content, setContent] = (0, react_1.useState)('');
     return (react_1.default.createElement("div", { className: "admin-page" },
         react_1.default.createElement("div", { className: "navbar" },
             react_1.default.createElement("ul", null,

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Blog from './Blog-Page/Blog.jsx';
 import BlogAdminPage from './BlogAdminPage.jsx';
 import './App.css';
